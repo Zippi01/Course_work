@@ -10,5 +10,9 @@
   <%= @restaurant.description %>
 </p>
 
+<p>
+  <%= image_tag @restaurant.image.url(:large), class: "img-show" if  @restaurant.image? %>
+</p>
+
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>

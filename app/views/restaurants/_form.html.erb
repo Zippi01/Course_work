@@ -1,4 +1,4 @@
-<%= form_with(model: restaurant, local: true) do |form| %>
+<%= form_with(model: restaurant, local: true, html: { multipart: true }) do |form| %>
   <% if restaurant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
@@ -29,6 +29,11 @@
   <div class="form-group">
     <strong><%= form.label :"Опис:" %></strong>
     <%= form.text_area :description, class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <strong><%= form.label :"Картинка:" %></strong>
+    <%= form.file_field :image%>
   </div>
 
   <div class="actions form-group">

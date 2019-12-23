@@ -1,4 +1,5 @@
 class Restaurant < ApplicationRecord
+  mount_uploader :image, ImageUploader
   belongs_to :city
   belongs_to :institution
 
