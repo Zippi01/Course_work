@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
   before_action :set_city, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_admin
 
   # GET /cities
   # GET /cities.json
@@ -65,6 +66,12 @@ class CitiesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_city
       @city = City.find(params[:id])
+    end
+
+    def authorize_admin
+      if !(current_user && current_user.admin == true)
+        redirect_to "/restaurants"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

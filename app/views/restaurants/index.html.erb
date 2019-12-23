@@ -1,41 +1,67 @@
+
 <p id="notice"><%= notice %></p>
 
-<h1>Restaurants</h1>
+<h1 class = "text-center">Restaurants</h1>
 
-<% @restaurants.each do |restaurant| %>
-  <div class="list-group-item px-20" style = "border-radius: 10px" >
+<% if current_user && current_user.admin == true %>
+  <%= link_to 'New Restaurant', new_restaurant_path %>
+  <br>
+  <%= link_to 'New Institution', new_institution_path %>
+  <br>
+  <%= link_to 'New City', new_city_path %>
+<% end %>
 
+<div class="col-md-8 container">
+  <% @restaurants.each do |restaurant| %>
+    <div class="list-group-item px-20">
 
-    <p><%= City.find(restaurant.city_id).name %></p>
-    <p><%= Institution.find(restaurant.institution_id).name %></p>
+      <div class="clearfix">
+        <%= image_tag restaurant.image.url(:thumb), class: "img-thumdnail thumb " if restaurant.image? %>
 
-    <h2><%= restaurant.name %></h2>
+          <p class="clearfix"> <%= link_to "#{restaurant.name}", restaurant, class: "title"%>
+            <br>
+            <%= Institution.find(restaurant.institution_id).name %>
+            <br>
+            <i class = "text-muted"><%= City.find(restaurant.city_id).name%>, <%= restaurant.adress%> </i>
+          </p>
 
-
-    <h5>Description</h5>
-      <p><%= restaurant.description %></p>
-
-    <div class="pjax-container">
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <%= link_to 'Show',
-            restaurant ,
-            class: 'btn btn-success'%>
-
-        <%= link_to 'Edit',
-            edit_restaurant_path(restaurant),
-            class: 'btn btn-secondary' %>
-
-        <%= link_to 'Destroy',
-            restaurant,
-            method: :delete,
-            data: { confirm: 'Are you sure?' },
-            class: 'btn btn-dark'%>
 
 
       </div>
-    </div>
-  </div>
-  <br>
-<% end %>
 
-<%= link_to 'New Restaurant', new_restaurant_path %>
+
+
+
+      <hr>
+
+      <hr>
+
+
+      <!-- <h5>Description</h5>
+        <p><%= restaurant.description %></p> -->
+
+      <div class="pjax-container">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <%= link_to 'Show',
+              restaurant ,
+              class: 'btn btn-success'%>
+
+          <% if current_user && current_user.admin == true %>
+
+            <%= link_to 'Edit',
+                edit_restaurant_path(restaurant),
+                class: 'btn btn-secondary' %>
+
+            <%= link_to 'Destroy',
+                restaurant,
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-dark'%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <br>
+  <% end %>
+</div>
