@@ -18,3 +18,14 @@
 .title:hover {
   color: #ee3739;
 }
+.image {
+  position: relative;
+  width: 100%;
+}
+.text {
+  position: absolute;
+  top: 100px;
+  left: 1em;
+  width: 100%;
+  color: white;
+}
