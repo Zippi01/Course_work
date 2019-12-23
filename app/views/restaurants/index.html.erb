@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Restaurants</h1>
+
+<% @restaurants.each do |restaurant| %>
+  <div class="list-group-item px-20" style = "border-radius: 10px" >
+
+
+    <p><%= City.find(restaurant.city_id).name %></p>
+    <p><%= Institution.find(restaurant.institution_id).name %></p>
+
+    <h2><%= restaurant.name %></h2>
+
+
+    <h5>Description</h5>
+      <p><%= restaurant.description %></p>
+
+    <div class="pjax-container">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <%= link_to 'Show',
+            restaurant ,
+            class: 'btn btn-success'%>
+
+        <%= link_to 'Edit',
+            edit_restaurant_path(restaurant),
+            class: 'btn btn-secondary' %>
+
+        <%= link_to 'Destroy',
+            restaurant,
+            method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: 'btn btn-dark'%>
+
+
+      </div>
+    </div>
+  </div>
+  <br>
+<% end %>
+
+<%= link_to 'New Restaurant', new_restaurant_path %>
