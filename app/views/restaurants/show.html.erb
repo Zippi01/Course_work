@@ -24,18 +24,20 @@
     <%= @restaurant.kitchen%>
   </p>
 
-</div>
+
 </div>
 <hr>
 
 
 
 <% @restaurant.comments.each do |comment| %>
-
+  <div class = "alert alert-light">
   <div class="container alert alert-lite contr">
-    <h4><%=User.find_by_id(comment.user_id).nickname%>: <%= comment.body %></h4>
+    <i class="fas fa-user"></i> <%=User.find_by_id(comment.user_id).nickname%>: <%= comment.body %>
+    <br>
+    <i class = "far fa-edit"></i> <%= distance_of_time_in_words(Time.now.hour, Time.now-comment.created_at) %> ago.
   </div>
-
+</div>
 <% end %>
 
 <div class="container new_comment_form">
@@ -54,4 +56,5 @@
       <% end %>
     </div>
   </div>
+</div>
 </div>
