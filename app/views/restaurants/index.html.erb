@@ -1,17 +1,12 @@
+<div class="image">
+  <img src = "https://i.imgur.com/GFQagcE.png" class="img-fluid" >
+</div>
+<h2 class="text">Каталог закладів</h2>
+<%= render partial: 'shared/flash',  flash: flash %>
 
-<p id="notice"><%= notice %></p>
 
-<h1 class = "text-center">Restaurants</h1>
 
-<% if current_user && current_user.admin == true %>
-  <%= link_to 'New Restaurant', new_restaurant_path %>
-  <br>
-  <%= link_to 'New Institution', new_institution_path %>
-  <br>
-  <%= link_to 'New City', new_city_path %>
-<% end %>
-
-<div class="col-md-8 container">
+<div class="col-md-6 container">
   <% @restaurants.each do |restaurant| %>
     <div class="list-group-item px-20">
 
@@ -26,32 +21,33 @@
           </p>
       </div>
       <hr>
-      <%= restaurant.work%>
+      <i class = "text-muted">Кухня : </i><%= restaurant.kitchen%>
       <br>
-      <%= restaurant.kitchen%>
+      <i class = "text-muted">Робочі години : </i><%= restaurant.work%>
       <hr>
 
 
       <!-- <h5>Description</h5>
         <p><%= restaurant.description %></p> -->
 
-      <div class="pjax-container">
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <%= link_to 'Show',
-              restaurant ,
-              class: 'btn btn-success'%>
+      <div class="pjax-container" align = "center">
+          <%= link_to ' ',
+              restaurant,
+              class: 'fas fa-concierge-bell icn_dish',
+              style: "color:green"%>
 
           <% if current_user && current_user.admin == true %>
 
-            <%= link_to 'Edit',
+          <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+            <%= link_to 'Редагувати',
                 edit_restaurant_path(restaurant),
-                class: 'btn btn-secondary' %>
+                class: 'btn btn-light' %>
 
-            <%= link_to 'Destroy',
+            <%= link_to 'Видалити',
                 restaurant,
                 method: :delete,
-                data: { confirm: 'Are you sure?' },
-                class: 'btn btn-dark'%>
+                data: { confirm: 'Ви впевнені?' },
+                class: 'btn btn-light'%>
         </div>
         <% end %>
       </div>

@@ -11,12 +11,12 @@
 }
 
 .title {
-    color: #ee3739;
+    color: green;
     font-weight: 700;
     font-size: 30px;
 }
 .title:hover {
-  color: #ee3739;
+  color: green;
 }
 .image {
   position: relative;
@@ -24,8 +24,22 @@
 }
 .text {
   position: absolute;
-  top: 100px;
+  top: 150px;
   left: 1em;
   width: 100%;
   color: white;
+}
+.icn_dish{
+  font-size: 21px;
+  display: block;
+  background-size: 21px auto;
+  margin-bottom: 3px;
+}
+.blog_link{
+  font-size: 15px;
+  margin-right: 9px;
+  color: green;
+}
+.blog_link:hover {
+  color: green;
 }
