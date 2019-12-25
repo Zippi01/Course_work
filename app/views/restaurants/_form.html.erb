@@ -1,57 +1,65 @@
-<%= form_with(model: restaurant, local: true, html: { multipart: true }) do |form| %>
-  <% if restaurant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+<br>
+<div class="container col-md-6 list-group-item px-20">
+  <%= form_with(model: restaurant, local: true, html: { multipart: true }) do |form| %>
+    <% if restaurant.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
 
-      <ul>
-        <% restaurant.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% restaurant.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <strong><%= form.label :"Назва закладу:"%></strong>
+      <%= form.text_field :name, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+      <strong><%= form.label :"Місто:"%></strong>
+      <%= form.select :city_id, City.all.pluck(:name,:id),{}, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+      <strong><%= form.label :"Адреса:"%></strong>
+      <%= form.text_field :adress, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+      <strong><%= form.label :"Тип заклада:"%></strong>
+      <%= form.select :institution_id, Institution.all.pluck(:name,:id),{}, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+      <strong><%= form.label :"Кухня:"%></strong>
+      <%= form.text_field :kitchen, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+      <strong><%= form.label :"Часи та дні роботи:"%></strong>
+      <%= form.text_field :work, class: "form-control"%>
+    </div>
+
+
+    <div class="form-group">
+      <strong><%= form.label :"Опис:" %></strong>
+      <%= form.text_area :description, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+      <strong><%= form.label :"Картинка:" %></strong>
+      <%= form.file_field :image%>
+    </div>
+
+    <div class="actions form-group">
+      <%= form.submit :Зберегти, class: "btn btn-success btn-sm btn-block"  %>
+    </div>
+
+    <div class=" actions form-group">
+      <%= link_to 'Назад', restaurants_path, class: "btn btn-outline-success btn-sm btn-block" %>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <strong><%= form.label :"Місто:"%></strong>
-    <%= form.select :city_id, City.all.pluck(:name,:id),{}, class: "form-control"%>
-  </div>
-
-  <div class="form-group">
-    <strong><%= form.label :"adress:"%></strong>
-    <%= form.text_field :adress, class: "form-control"%>
-  </div>
-
-  <div class="form-group">
-    <strong><%= form.label :"Тип заклада:"%></strong>
-    <%= form.select :institution_id, Institution.all.pluck(:name,:id),{}, class: "form-control"%>
-  </div>
-
-  <div class="form-group">
-    <strong><%= form.label :"kitchen:"%></strong>
-    <%= form.text_field :kitchen, class: "form-control"%>
-  </div>
-
-  <div class="form-group">
-    <strong><%= form.label :"work:"%></strong>
-    <%= form.text_field :work, class: "form-control"%>
-  </div>
-
-  <div class="form-group">
-    <strong><%= form.label :"Назва закладу:"%></strong>
-    <%= form.text_field :adress, class: "form-control"%>
-  </div>
-
-  <div class="form-group">
-    <strong><%= form.label :"Опис:" %></strong>
-    <%= form.text_area :description, class: "form-control"%>
-  </div>
-
-  <div class="form-group">
-    <strong><%= form.label :"Картинка:" %></strong>
-    <%= form.file_field :image%>
-  </div>
-
-  <div class="actions form-group">
-    <%= form.submit :Done, class: "btn btn-success btn-sm"  %>
-  </div>
-<% end %>
+</div>

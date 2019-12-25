@@ -1,15 +1,19 @@
-<p id="alert"><%= alert %></p>
-<h1>Login</h1>
+
+<br>
+<div class="container col-md-6 list-group-item px-20">
+<%= render partial: 'shared/flash',  flash: flash %>
+<h1 align = "center">Вхід</h1>
 <%= form_tag sessions_path do |form| %>
-  <div class="field">
-    <%= label_tag :email %>
+  <div class="form-group">
+    <%= label_tag :"Email : "%>
     <%= text_field_tag :email %>
   </div>
-  <div class="field">
-    <%= label_tag :password %>
+  <div class="form-group">
+    <%= label_tag :"Пароль :" %>
     <%= password_field_tag :password %>
   </div>
-  <div class="actions">
-    <%= submit_tag "Login" %>
+  <div class="actions form-group">
+    <%= submit_tag "Вхід", class: "btn btn-success btn-sm btn-block" %>
   </div>
 <% end %>
+</div>

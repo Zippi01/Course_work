@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :users
   resources :institutions
   resources :cities
-  resources :restaurants
+
+  resources :restaurants do
+    resources :comments
+  end
+  
   root 'restaurants#index', as: 'home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users

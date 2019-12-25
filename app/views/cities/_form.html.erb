@@ -1,22 +1,30 @@
-<%= form_with(model: city, local: true) do |form| %>
-  <% if city.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(city.errors.count, "error") %> prohibited this city from being saved:</h2>
+<br>
+<div class="container col-md-6 list-group-item px-20">
+  <%= form_with(model: city, local: true) do |form| %>
+    <% if city.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(city.errors.count, "error") %> prohibited this city from being saved:</h2>
 
-      <ul>
-        <% city.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% city.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <strong><%= form.label :"Назва міста :" %></strong>  
+      <%= form.text_field :name, class: "form-control"%>
     </div>
+
+    <div class="actions form-group">
+      <%= form.submit :Зберегти, class: "btn btn-success btn-sm btn-block" %>
+    </div>
+
+    <div class=" actions form-group">
+      <%= link_to 'Назад', cities_path, class: "btn btn-outline-success btn-sm btn-block" %>
+    </div>
+
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

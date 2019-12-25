@@ -1,6 +1,6 @@
-<h1>Editing</h1>
-
+<div class="image">
+  <img src = "https://i.imgur.com/vzB9wEQ.jpg" class="img-fluid" >
+</div>
+<h2 class="text">Редагувати</h2>
+<%= render partial: 'shared/flash',  flash: flash %>
 <%= render 'form', restaurant: @restaurant %>
-
-<%= link_to 'Show', @restaurant %> |
-<%= link_to 'Back', restaurants_path %>

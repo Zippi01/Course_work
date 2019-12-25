@@ -1,27 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Cities</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cities.each do |city| %>
-      <tr>
-        <td><%= city.name %></td>
-        <td><%= link_to 'Show', city %></td>
-        <td><%= link_to 'Edit', edit_city_path(city) %></td>
-        <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="image">
+  <img src = "https://i.imgur.com/vzB9wEQ.jpg" class="img-fluid" >
+</div>
+<h2 class="text">Міста</h2>
+<%= render partial: 'shared/flash',  flash: flash %>
 
 <br>
-
-<%= link_to 'New City', new_city_path %>
+<div class="container col-md-6 list-group-item px-20">
+  <% @cities.each do |city| %>
+  <p><strong>Місто :</strong> <%= city.name %></p>
+    <div class="btn-group btn-group-toggle btn-block" data-toggle="buttons">
+      <%= link_to 'Редагувати', edit_city_path(city), class: 'btn btn-outline-success' %>
+      <%= link_to 'Видалити', city, method: :delete, data: { confirm: 'Ви впевнені?' }, class: 'btn btn-outline-success' %>
+    </div>
+  <hr>
+  <% end %>
+</div>

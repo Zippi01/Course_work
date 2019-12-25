@@ -1,18 +1,57 @@
-<p id="notice"><%= notice %></p>
+<br>
+<div class="col-md-8 container">
+  <%= render partial: 'shared/flash',  flash: flash %>
+  <div class="list-group-item px-20">
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+  <h2><%= Institution.find(@restaurant.institution_id).name %> <%= @restaurant.name %></h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @restaurant.description %>
-</p>
+  <i class = "text-muted"> <i class="fas fa-map-marker-alt"></i> <%= City.find(@restaurant.city_id).name%>, <%= @restaurant.adress%> </i>
+<hr>
+<br>
 
-<p>
-  <%= image_tag @restaurant.image.url(:large), class: "img-show" if  @restaurant.image? %>
-</p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+  <p>
+    <%= image_tag @restaurant.image.url(:large), class: "img-show" if  @restaurant.image? %>
+  </p>
+
+  <p>
+    <h4><p>Опис:</p></h4>
+    <%= @restaurant.description %>
+  </p>
+
+  <p>
+    <strong>Кухня:</strong>
+    <%= @restaurant.kitchen%>
+  </p>
+
+</div>
+</div>
+<hr>
+
+
+
+<% @restaurant.comments.each do |comment| %>
+
+  <div class="container alert alert-lite contr">
+    <h4><%=User.find_by_id(comment.user_id).nickname%>: <%= comment.body %></h4>
+  </div>
+
+<% end %>
+
+<div class="container new_comment_form">
+  <div class="coments" id="form_new">
+    <div id="form_comment">
+      <% if current_user %>
+        <h4>Залишити відгук:</h4>
+        <%= form_with(model: [ @restaurant, @restaurant.comments.build ]) do |form| %>
+          <p>
+            <%= form.text_area :body, class:'form-control' %>
+          </p>
+          <p>
+            <%= form.submit "Опублікувати", class:'btn btn-success btn-sm ' %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
