@@ -29,7 +29,7 @@ class CitiesController < ApplicationController
 
     respond_to do |format|
       if @city.save
-        format.html { redirect_to "/cities", notice: 'City was successfully created.' }
+        format.html { redirect_to "/cities", notice: 'Місто успішно створено.' }
         format.json { render :show, status: :created, location: @city }
       else
         format.html { render :new }

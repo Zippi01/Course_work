@@ -43,6 +43,15 @@
       <%= form.text_field :work, class: "form-control"%>
     </div>
 
+    <div class="form-group">
+      <strong><%= form.label :"Посилання на сайт:" %></strong>
+      <%= form.text_field :site, class: "form-control"%>
+    </div>
+
+    <div class="form-group">
+      <strong><%= form.label :"Email:" %></strong>
+      <%= form.text_field :email, class: "form-control"%>
+    </div>
 
     <div class="form-group">
       <strong><%= form.label :"Опис:" %></strong>
@@ -59,8 +68,9 @@
       <%= form.file_field :menu%>
     </div>
 
+
     <div class="actions form-group">
-      <%= form.submit :Зберегти, class: "btn btn-success btn-sm btn-block"  %>
+      <%= form.submit :"Зберегти", class: "btn btn-success btn-sm btn-block"  %>
     </div>
 
     <div class=" actions form-group">

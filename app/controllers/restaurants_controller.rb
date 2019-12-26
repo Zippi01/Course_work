@@ -7,10 +7,10 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
 
     if params[:search]
-    @restaurants = Restaurant.search(params[:search]).order('updated_at').reverse
-  else
-    @restaurants = Restaurant.all.order('updated_at').reverse
-  end
+      @restaurants = Restaurant.search(params[:search]).order('updated_at').reverse
+    else
+      @restaurants = Restaurant.all.order('updated_at').reverse
+    end
   end
 
   # GET /restaurants/1
@@ -75,6 +75,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :city_id, :institution_id, :work, :kitchen, :adress, :image, :menu)
+      params.require(:restaurant).permit(:name, :description, :city_id, :institution_id, :work, :kitchen, :adress, :image, :menu, :email, :site)
     end
 end

@@ -9,7 +9,6 @@
 <hr>
 <br>
 
-
   <p>
     <%= image_tag @restaurant.image.url(:large), class: "img-show" if  @restaurant.image? %>
   </p>
@@ -31,13 +30,20 @@
     <strong>Кухня:</strong>
     <%= @restaurant.kitchen%>
   </p>
-
-
+  <% if @restaurant.site?%>
+    <p>
+      <strong>Посилання на сайт:</strong>
+      <%= @restaurant.site%>
+    </p>
+  <% end %>
+  <% if @restaurant.email?%>
+    <p>
+      <strong>Email:</strong>
+      <%= @restaurant.email%>
+    </p>
+  <% end %>
 </div>
 <hr>
-
-
-
 <% @restaurant.comments.each do |comment| %>
   <div class = "alert alert-light">
   <div class="container alert alert-lite contr">
