@@ -29,10 +29,17 @@
         <p><%= restaurant.description %></p> -->
 
       <div class="pjax-container" align = "center">
+        <% if restaurant.menu? %>
           <%= link_to ' ',
-              restaurant,
+              restaurant.menu.url(:large),
               class: 'fas fa-concierge-bell icn_dish',
               style: "color:green"%>
+        <% else %>
+        <%= link_to ' ',
+            restaurant,
+            class: 'fas fa-concierge-bell icn_dish',
+            style: "color:green"%>
+       <% end %>
 
           <% if current_user && current_user.admin == true %>
 

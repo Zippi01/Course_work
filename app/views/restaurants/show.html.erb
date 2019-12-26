@@ -13,7 +13,15 @@
   <p>
     <%= image_tag @restaurant.image.url(:large), class: "img-show" if  @restaurant.image? %>
   </p>
-
+  <% if @restaurant.menu?%>
+<hr>
+  <p>
+    <h4><p>Меню :</p></h4>
+    <%= link_to "Show menu", @restaurant.menu.url(:large), class:"btn btn-light btn-sm"%>
+    <%= image_tag @restaurant.menu.url(:thumb), class: "img-show" if  @restaurant.menu? %>
+  </p>
+  <% end %>
+<hr>
   <p>
     <h4><p>Опис:</p></h4>
     <%= @restaurant.description %>

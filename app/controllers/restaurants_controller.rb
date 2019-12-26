@@ -34,7 +34,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
+        format.html { redirect_to @restaurant, notice: 'Заклад успішно створений.' }
         format.json { render :show, status: :created, location: @restaurant }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
-        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully updated.' }
+        format.html { redirect_to @restaurant, notice: 'Заклад було успішно оновлено.' }
         format.json { render :show, status: :ok, location: @restaurant }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class RestaurantsController < ApplicationController
   def destroy
     @restaurant.destroy
     respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
+      format.html { redirect_to restaurants_url, notice: 'Заклад був успішно видалений.' }
       format.json { head :no_content }
     end
   end
@@ -75,6 +75,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :city_id, :institution_id, :work, :kitchen, :adress, :image)
+      params.require(:restaurant).permit(:name, :description, :city_id, :institution_id, :work, :kitchen, :adress, :image, :menu)
     end
 end
